@@ -1,0 +1,13 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "News module",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Michael Dimchuk",
+  "license": "ISC"
+}
