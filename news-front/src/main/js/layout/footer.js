@@ -1,48 +1,23 @@
-import LinkMenu from '../component/link-menu';
+import LinkMenu from '../component/links/link-menu';
 import FooterContact from '../component/footer-contact';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class Footer extends React.Component {
-  constructor() {
-      super();
-
-      this.social_ = [
-            {text:"Facebook", url:"#!"},
-            {text:"Twitter", url:"#!"},
-            {text:"YouTube", url:"#!"},
-            {text:"Instagram", url:"#!"},
-            {text:"LinkedIn", url:"#!"},
-            {text:"RSS", url:"#!"}];
-
-      this.services_ = [
-            {text:"Corporate Info", url:"#!"},
-            {text:"Public Appearances", url:"#!"},
-            {text:"Commercial Services", url:"#!"},
-            {text:"Terms of Use", url:"#!"},
-            {text:"Privacy Policy", url:"#!"},
-            {text:"FAQ", url:"#!"}];
-
-      this.contact_ = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
-            "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis" +
-            "nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
-            "fugiat nulla pariatur."
-    }
-
   render() {
+    var footer = window.DATA.footer;
     return (
       <footer className="page-footer indigo darken-1">
         <div className="container">
           <div className="row">
-            <LinkMenu title="Social Media" data={this.social_}/>
-            <LinkMenu title="Services & Info" data={this.services_}/>
-            <FooterContact title="Contact Lorem Ipsum" text={this.contact_} />
+            <LinkMenu title={footer.social.title} data={footer.social.links}/>
+            <LinkMenu title={footer.services.title} data={footer.services.links}/>
+            <FooterContact title={footer.contact.title} text={footer.contact.text} />
           </div>
         </div>
         <div className="footer-copyright">
-          <div className="container center">© 2017 Lorem Ipsum Co., Ltd.</div>
+          <div className="container center">{footer.copyright}</div>
         </div>
       </footer>
     );

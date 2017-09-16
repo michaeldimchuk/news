@@ -5,49 +5,40 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class NewsView extends React.Component {
-  constructor() {
-    super();
-    this.linkText_ = "Read Further";
-    this.linkUrl_ = "#";
-    this.title_ = "Lorem ipsum dolor sit";
-    this.cardUrl_ = "images/sample-1.jpg";
-    this.cardTitle_ = "Lorem ipsum dolor sit";
-    this.text_ = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                 "sed do eiusmodtempor incididunt ut labore et dolore magna" +
-                 "aliqua. Ut enim ad minim veniam, quisnostrud exercitation " +
-                 "ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-    this.pages_ = [
-      {active:true, url:"#", text:"1"},
-      {url:"#", text:"2"},
-      {url:"#", text:"3"},
-      {url:"#", text:"4"},
-      {url:"#", text:"5"}
-    ];
-  }
-
   generateArticles_() {
-    var articles = [];
-    for(let i = 0; i < 6; i++) {
-      var article = <ArticlePreview key={i} title={this.title_} text={this.text_}
-                        cardUrl={this.cardUrl_} cardTitle={this.cardTitle_}
-                        linkText={this.linkText_} linkUrl={this.linkUrl_} />;
-      articles.push(article);
+    var articles = window.DATA.body.news.articles;
+    var viewingTop = window.DATA.body.viewingTop;
+    var components = [];
+    for(let i = 0; i < articles.length; i++) {
+      var article = articles[i];
+      var component = <ArticlePreview key={i} suggested={viewingTop && i === 0} title={article.title}
+                        text={article.text} cardImage={article.cardImage} cardTitle={article.cardTitle}
+                        linkText={article.link.text} linkUrl={article.link.url} />;
+      components.push(component);
     }
-    return articles;
+    return components;
+  };
+
+  generatePaginationUrls_() {
+    var page = window.DATA.body.news.page;
+    var prefix = page.prefix;
+    var prev = page.currentPage <= 1 ? 1 : (page.currentPage - 1);
+    return {
+      nextPageUrl : prefix + (page.currentPage + 1),
+      prevPageUrl : prefix + prev
+    };
   };
 
   render() {
+    var page = window.DATA.body.news.page;
     var articles = this.generateArticles_();
+    var links = this.generatePaginationUrls_();
+    console.log(links);
     return (
       <div className="row">
-        <ArticlePreview suggested={true} title={this.title_} text={this.text_}
-            cardUrl={this.cardUrl_} cardTitle={this.cardTitle_} linkText={this.linkText_}
-            linkUrl={this.linkUrl_} />
-
         {articles}
-
-        <Pagination customClass="col s12" prevPageUrl="#"
-            nextPageUrl="#" firstPage={true} data={this.pages_}/>
+        <Pagination customClass="col s12" prevPageUrl={links.prevPageUrl} nextPageUrl={links.nextPageUrl}
+            firstPage={page.firstPage} lastPage={page.lastPage} data={page.pages}/>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import LocalView from '../component/local-view';
+import LocalView from '../component/local/local-view';
 
 const React = require('react');
 const ReactDOM = require('react-dom');

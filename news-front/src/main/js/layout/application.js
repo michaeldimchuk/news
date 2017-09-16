@@ -6,13 +6,13 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class Application extends React.Component {
-	render() {
-		return (
+  render() {
+    return (
       <div>
         <Header />
         <Body />
         <Footer />
       </div>
-		);
-	}
+    );
+  }
 }

@@ -1,3 +1,5 @@
+import CardImage from './general/card-image';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 
@@ -7,10 +9,9 @@ export default class ArticlePreview extends React.Component {
 		return (
       <div className={"col " + (suggested ? "s12" : "s4")}>
         <div className="card hoverable">
-          <div className={"card-image " + (suggested ? "article-preview-image" : "")}>
-            <img src={this.props.cardUrl}></img>
-            <span className="card-title">{this.props.cardTitle}</span>
-          </div>
+          <CardImage customClass={(suggested ? "article-preview-image" : "")}
+              image={this.props.cardImage} title={this.props.cardTitle} />
+
           <div className={(suggested ? "article-preview-body" : "")}>
             <div className="card-content">
               <h5>{this.props.title}</h5>

@@ -1,6 +1,6 @@
 import LinkMenuElement from './link-menu-element';
 
-import { generateLinks } from '../utils/link-generator';
+import { generateLinks } from '../../utils/link-generator';
 
 const React = require('react');
 const ReactDOM = require('react-dom');

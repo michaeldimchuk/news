@@ -28,7 +28,7 @@ export default class Pagination extends React.Component {
     for(let i = 0; i < this.props.data.length; i++) {
       let page = this.props.data[i];
       var component = (
-        <li className={(page.active ? ACTIVE : WAVES)}>
+        <li className={(page.active ? ACTIVE : WAVES)} key={i}>
           <a href={page.url}>{page.text}</a>
         </li>
       );
