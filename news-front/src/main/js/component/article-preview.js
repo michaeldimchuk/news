@@ -4,9 +4,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class ArticlePreview extends React.Component {
-	render() {
-	  var suggested = this.props.suggested;
-		return (
+  render() {
+    var suggested = this.props.suggested;
+    return (
       <div className={"col " + (suggested ? "s12" : "s4")}>
         <div className="card hoverable">
           <CardImage customClass={(suggested ? "article-preview-image" : "")}
@@ -23,6 +23,6 @@ export default class ArticlePreview extends React.Component {
           </div>
         </div>
       </div>
-		);
-	}
+    );
+  }
 }
