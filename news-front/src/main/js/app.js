@@ -1,17 +1,10 @@
-'use strict';
+import Application from './layout/application';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-class App extends React.Component {
-	render() {
-		return (
-			<div>Hello World!</div>
-		);
-	}
-}
 
 ReactDOM.render(
-	<App />,
+	<Application />,
 	document.getElementById('react')
 );

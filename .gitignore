@@ -1,6 +1,11 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+### Front Modules ###
+news-front/node_modules
+news-front/src/main/resources/static/built
+npm-debug.log
+
 ### Maven ###
 .mvn
 
