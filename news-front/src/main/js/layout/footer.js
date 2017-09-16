@@ -33,7 +33,7 @@ export default class Footer extends React.Component {
 
 	render() {
 		return (
-      <footer className="page-footer blue-grey darken-1">
+      <footer className="page-footer indigo darken-1">
         <div className="container">
           <div className="row">
             <LinkMenu title="Social Media" data={this.social_}/>
@@ -41,7 +41,7 @@ export default class Footer extends React.Component {
             <FooterContact title="Contact Lorem Ipsum" text={this.contact_} />
           </div>
         </div>
-        <div className="footer-copyright blue-grey darken-1">
+        <div className="footer-copyright">
           <div className="container center">© 2017 Lorem Ipsum Co., Ltd.</div>
         </div>
       </footer>

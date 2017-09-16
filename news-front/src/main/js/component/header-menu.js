@@ -7,7 +7,7 @@ const ReactDOM = require('react-dom');
 
 export default class HeaderMenu extends React.Component {
   createMenuElement_(index, text, url) {
-    return <HeaderMenuElement key={index} text={text} url={url} />;
+    return <HeaderMenuElement key={index} text={text} url={url} active={index == 0}/>;
   };
 
 	render() {

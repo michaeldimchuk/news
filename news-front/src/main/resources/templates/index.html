@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+  <meta charset="UTF-8"/>
+  <title>News</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+  <div id="react"></div>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+        window.DATA = JSON.parse(/*[[${data}]]*/ '{}');
+    /*]]>*/
+  </script>
+  <script src="built/bundle.js"></script>
+</body>
+</html>
