@@ -34,7 +34,6 @@ export default class NewsView extends React.Component {
     var page = window.DATA.body.news.page;
     var articles = this.generateArticles_();
     var links = this.generatePaginationUrls_();
-    console.log(links);
     return (
       <div className="row">
         {articles}

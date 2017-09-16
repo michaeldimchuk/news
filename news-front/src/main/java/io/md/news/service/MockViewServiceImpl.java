@@ -11,18 +11,18 @@ public class MockViewServiceImpl implements ViewService {
 
     private static final String ARTICLE = CONTEXT + "/article";
 
-    private static final String TITLE = "Lorem ipsum dolor sit";
+    private static final String TITLE = "Lorem ipsum dolor";
 
-    private static final String ARTICLE_IMG = "images/sample-1.jpg";
+    private static final String ARTICLE_IMG = CONTEXT + "/images/sample-1.jpg";
 
-    private static final String LOCAL_IMG = "images/bc.jpg";
+    private static final String LOCAL_IMG = CONTEXT + "/images/bc.jpg";
 
     private static final String READ = "Continue reading";
 
     private static final String CONTENT = "Lorem ipsum dolor sit amet, consectetur " +
             "adipiscing elit, sed do eiusmodtempor incididunt ut labore et dolore " +
             "magnaaliqua. Ut enim ad minim veniam, quisnostrud exercitation ullamco " +
-            "laboris nisi ut aliquip ex ea commodo consequat.";
+            "laboris nisi ut aliquip ex ea commodo consequat. ";
 
     private static final String CONTACT_US = CONTENT + "Duis aute irure dolor in " +
             "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
@@ -49,7 +49,7 @@ public class MockViewServiceImpl implements ViewService {
     }
 
     private View getView(int page, boolean viewingTop, ViewMode mode) {
-        return new View(createHeader(), createBody(page, viewingTop),
+        return new View(createHeader(), createBody(page, viewingTop, mode),
                 createFooter(), mode.toString());
     }
 
@@ -58,14 +58,29 @@ public class MockViewServiceImpl implements ViewService {
         return new Header(logo, createHeaderLinks());
     }
 
-    private Body createBody(int page, boolean viewingTop) {
-        return new Body(createBodyNews(page), createLocalNews(), viewingTop);
+    private Body createBody(int page, boolean viewingTop, ViewMode mode) {
+        if(ViewMode.NORMAL.equals(mode)) {
+            return new Body(createBodyNews(page), createLocalNews(), viewingTop);
+        } else {
+            return new Body(createSingleBodyNews(page), null, viewingTop);
+        }
     }
 
     private MainNews createBodyNews(int page) {
-        return new MainNews(createArticles(page), createPagination(page));
+        return new MainNews(createArticles(page), createPagination(page), null);
     }
 
+    private MainNews createSingleBodyNews(int page) {
+        return new MainNews(null, null, createArticleView(page));
+    }
+
+    private ArticleView createArticleView(int page) {
+        List<String> paragraphs = new ArrayList<>();
+        for(int x = 0; x < 5; x++) {
+            paragraphs.add(CONTENT + CONTENT + CONTENT);
+        }
+        return new ArticleView(ARTICLE_IMG, TITLE + " " + page, paragraphs);
+    }
 
     private List<ArticleCard> createArticles(int page) {
         List<ArticleCard> articles = new ArrayList<>();
@@ -76,8 +91,9 @@ public class MockViewServiceImpl implements ViewService {
     }
 
     private ArticleCard createArticle(int count) {
+        String title = TITLE + " " + count;
         Link link = new Link(READ, ARTICLE + "/" + count);
-        return new ArticleCard(ARTICLE_IMG, TITLE, TITLE, CONTENT, link);
+        return new ArticleCard(ARTICLE_IMG, title, title, CONTENT, link);
     }
 
     private int offset(int page) {

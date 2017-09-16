@@ -49,3 +49,15 @@ ul.header-items {
 .pagination li.news-active {
   background-color: #3949ab
 }
+
+.article-view {
+  margin: 8px 0px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-view-img {
+  max-height: 400px;
+  overflow: hidden;
+}

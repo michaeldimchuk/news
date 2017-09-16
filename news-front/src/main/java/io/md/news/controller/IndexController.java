@@ -39,9 +39,8 @@ public class IndexController {
 
     @RequestMapping("/article/{article}")
     public String article(@PathVariable(required = false) Integer article, Model model) throws Exception {
-        if(article == null) {
-            return index(FIRST_PAGE, model);
-        }
+        View view = viewService.getArticleView(article, false);
+        model.addAttribute(DATA, objectMapper.writeValueAsString(view));
         return "index";
     }
 

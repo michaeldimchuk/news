@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MainNews {
-    private List<ArticleCard> articles;
-    private Pagination page;
-    private ArticleView article;
+public class ArticleView {
+    private String image;
+    private String title;
+    private List<String> paragraphs;
 }
