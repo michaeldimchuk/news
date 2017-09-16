@@ -23,8 +23,9 @@ export default class NewsView extends React.Component {
     var page = window.DATA.body.news.page;
     var prefix = page.prefix;
     var prev = page.currentPage <= 1 ? 1 : (page.currentPage - 1);
+    var next = page.lastPage ? page.currentPage : (page.currentPage + 1);
     return {
-      nextPageUrl : prefix + (page.currentPage + 1),
+      nextPageUrl : prefix + next,
       prevPageUrl : prefix + prev
     };
   };
