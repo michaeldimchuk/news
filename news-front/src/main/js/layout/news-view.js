@@ -36,19 +36,19 @@ export default class NewsView extends React.Component {
     return articles;
   };
 
-	render() {
-	  var articles = this.generateArticles_();
-		return (
-		  <div className="row">
-			  <ArticlePreview suggested={true} title={this.title_} text={this.text_}
-			      cardUrl={this.cardUrl_} cardTitle={this.cardTitle_} linkText={this.linkText_}
-			      linkUrl={this.linkUrl_} />
+  render() {
+    var articles = this.generateArticles_();
+    return (
+      <div className="row">
+        <ArticlePreview suggested={true} title={this.title_} text={this.text_}
+            cardUrl={this.cardUrl_} cardTitle={this.cardTitle_} linkText={this.linkText_}
+            linkUrl={this.linkUrl_} />
 
-			  {articles}
+        {articles}
 
         <Pagination customClass="col s12" prevPageUrl="#"
             nextPageUrl="#" firstPage={true} data={this.pages_}/>
-			</div>
-		);
-	}
+      </div>
+    );
+  }
 }

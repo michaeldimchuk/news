@@ -4,9 +4,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class NewsSide extends React.Component {
-	render() {
-		return (
-			<LocalView />
-		);
-	}
+  render() {
+    return (
+      <LocalView />
+    );
+  }
 }

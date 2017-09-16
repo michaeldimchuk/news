@@ -17,14 +17,14 @@ export default class Header extends React.Component {
     ];
   }
 
-	render() {
-		return (
-			<nav className="header indigo darken-1">
+  render() {
+    return (
+      <nav className="header indigo darken-1">
         <div className="nav-wrapper">
           <a href="" className="brand-logo">News</a>
           <HeaderMenu data={this.elements_} />
         </div>
       </nav>
-		);
-	}
+    );
+  }
 }

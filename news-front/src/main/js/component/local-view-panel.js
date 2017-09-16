@@ -13,7 +13,7 @@ export default class LocalViewPanel extends React.Component {
             <img src="images/bc.jpg"></img>
             <span className="card-title">Local Stories</span>
           </div>
-          <ul className="collection local-view-panel-collection">
+          <ul className="collection   ">
             <LocalViewPanelElement text="Lorem ipsum dolor" />
             <LocalViewPanelElement text="Lorem ipsum dolor" />
             <LocalViewPanelElement text="Lorem ipsum dolor" />

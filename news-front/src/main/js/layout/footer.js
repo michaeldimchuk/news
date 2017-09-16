@@ -31,8 +31,8 @@ export default class Footer extends React.Component {
             "fugiat nulla pariatur."
     }
 
-	render() {
-		return (
+  render() {
+    return (
       <footer className="page-footer indigo darken-1">
         <div className="container">
           <div className="row">
@@ -45,6 +45,6 @@ export default class Footer extends React.Component {
           <div className="container center">© 2017 Lorem Ipsum Co., Ltd.</div>
         </div>
       </footer>
-		);
-	}
+    );
+  }
 }
