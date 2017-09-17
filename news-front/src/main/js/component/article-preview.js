@@ -1,11 +1,14 @@
 import CardImage from './general/card-image';
 
+import { resolveText } from '../utils/text-resource';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class ArticlePreview extends React.Component {
   render() {
     var suggested = this.props.suggested;
+    var linkText = resolveText(this.props.linkText);
     return (
       <div className={"col " + (suggested ? "s12" : "s4")}>
         <div className="card hoverable">
@@ -18,7 +21,7 @@ export default class ArticlePreview extends React.Component {
               <p>{this.props.text}</p>
             </div>
             <div className="card-action">
-              <a href={this.props.linkUrl}>{this.props.linkText}</a>
+              <a href={this.props.linkUrl}>{linkText}</a>
             </div>
           </div>
         </div>

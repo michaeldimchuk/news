@@ -3,13 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.md.news</groupId>
-  <artifactId>news-front</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>news-front</name>
-
   <parent>
     <groupId>io.md.news</groupId>
     <artifactId>news</artifactId>
@@ -17,7 +10,19 @@
     <relativePath>../</relativePath>
   </parent>
 
+  <groupId>io.md.news</groupId>
+  <artifactId>news-front</artifactId>
+
   <dependencies>
+    <dependency>
+      <groupId>io.md.news</groupId>
+      <artifactId>news-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.md.news</groupId>
+      <artifactId>news-dto</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>

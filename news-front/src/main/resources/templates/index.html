@@ -3,18 +3,38 @@
 <head lang="en">
   <meta charset="UTF-8"/>
   <title>News</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
-  <link rel="stylesheet" href="/news/css/main.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+  <link rel="stylesheet" href="/news/css/main.css"/>
 </head>
 
-<body>
-  <div id="react"></div>
-  <script th:inline="javascript">
-    /*<![CDATA[*/
-        window.DATA = JSON.parse(/*[[${data}]]*/ '{}');
-    /*]]>*/
-  </script>
-  <script src="/news/built/bundle.js"></script>
+<body id="news-body">
+<div id="react"></div>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+      window.TEXT = JSON.parse(/*[[${text}]]*/ '{}');
+      window.DATA = JSON.parse(/*[[${data}]]*/ '{}');
+  /*]]>*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script src="/news/built/bundle.js"></script>
 </body>
 </html>

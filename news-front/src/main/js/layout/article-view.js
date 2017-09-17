@@ -2,24 +2,24 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class ArticleView extends React.Component {
-  createParagraphs_(article) {
+  createParagraphs_(body) {
     var paragraphs = [];
-    for(let i = 0; i < article.paragraphs.length; i++) {
-      var component = <p key={i}>{article.paragraphs[i]}</p>
+    for(let i = 0; i < body.paragraphs.length; i++) {
+      var component = <p key={i}>{body.paragraphs[i]}</p>
       paragraphs.push(component);
     }
     return paragraphs;
   };
 
   render() {
-    var article = window.DATA.body.news.article;
-    var paragraphs = this.createParagraphs_(article);
+    var body = window.DATA.body;
+    var paragraphs = this.createParagraphs_(body);
     return (
       <div className="card-panel article-view">
         <div className="article-view-img">
-          <img src={article.image}></img>
+          <img src={body.image}></img>
         </div>
-        <h4>{article.title}</h4>
+        <h4>{body.title}</h4>
         {paragraphs}
       </div>
     );

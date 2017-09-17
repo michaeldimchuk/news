@@ -1,13 +1,14 @@
 import LinkMenuElement from './link-menu-element';
 
 import { generateLinks } from '../../utils/link-generator';
+import { resolveText } from '../../utils/text-resource';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class LinkMenu extends React.Component {
   createMenuElement_(index, text, url) {
-    return <LinkMenuElement key={index} text={text} url={url} />;
+    return <LinkMenuElement key={index} text={resolveText(text)} url={url} />;
   };
 
   render() {

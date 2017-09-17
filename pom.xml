@@ -21,7 +21,24 @@
     <java.version>1.8</java.version>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.md.news</groupId>
+        <artifactId>news-dto</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.md.news</groupId>
+        <artifactId>news-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
+    <module>news-dto</module>
+    <module>news-core</module>
     <module>news-front</module>
   </modules>
 </project>
