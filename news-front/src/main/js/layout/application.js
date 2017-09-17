@@ -10,13 +10,14 @@ export default class Application extends React.Component {
     var header = window.DATA.header;
     var body = window.DATA.body;
     var footer = window.DATA.footer;
+    var local = body.local ? body.local : {};
 
     return (
       <div>
         <Header logoUrl={header.logo.url} logoText={header.logo.text} tabs={header.tabs} active={header.active} />
 
         <Body displayMode={body.mode} feedMode={body.feedMode}
-              localTitle={body.local.title} localImage={body.local.image} localLinks={body.local.links}
+              localTitle={local.title} localImage={local.image} localLinks={local.links}
               articleTitle={body.title} articleImage={body.image} articleContent={body.paragraphs} />
 
         <Footer socialTitle={footer.social.title} socialLinks={footer.social.links}
