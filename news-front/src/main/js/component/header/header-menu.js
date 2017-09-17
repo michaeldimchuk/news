@@ -7,13 +7,12 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 export default class HeaderMenu extends React.Component {
-  createMenuElement_(index, text, url) {
-    var active = window.DATA.header.active === text;
-    return <HeaderMenuElement key={index} text={resolveText(text)} url={url} active={active}/>;
+  createMenuElement_(index, text, url, active) {
+    return <HeaderMenuElement key={index} text={resolveText(text)} url={url} active={text === active}/>;
   };
 
 	render() {
-	  var links = generateLinks(this.props.data, this.createMenuElement_);
+	  var links = generateLinks(this.props.data, this.createMenuElement_, this.props.active);
 		return (
 			<ul id="nav-mobile" className="hide-on-med-and-down header-items">
         {links}

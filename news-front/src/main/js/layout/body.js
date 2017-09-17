@@ -1,6 +1,6 @@
 import NewsView from './news-view';
-import NewsSide from './news-side';
 import ArticleView from './article-view'
+import LocalView from '../component/local/local-view';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -20,11 +20,19 @@ export default class Body extends React.Component {
     };
   };
 
+  handleLoadedData_(data, self) {
+    let updatedArticles = self.state.articles.concat(data.articles);
+    self.setState({articles : updatedArticles});
+    updateBody(data, updatedArticles);
+    enableLoading(false);
+  };
+
   handleScrollEvent_(e, self) {
     if(canRequestMore() && needsMorePages(e.target.body)) {
       enableLoading(true);
       let url = generateUrl();
-      fetch(url).then(result => { return result.json(); })
+      fetch(url)
+        .then(result => { return result.json(); })
         .then(data => {
           let updatedArticles = self.state.articles.concat(data.articles);
           self.setState({articles : updatedArticles});
@@ -45,30 +53,29 @@ export default class Body extends React.Component {
   };
 
   getNewsViewComponent_() {
-    var body = window.DATA.body;
     return [
       <div className="col s9" key={0}>
-        <NewsView feedMode={body.feedMode} articles={this.state.articles} />
+        <NewsView feedMode={this.props.feedMode} articles={this.state.articles} />
       </div>,
       <div className="col s3" key={1}>
-        <NewsSide />
+        <LocalView title={this.props.localTitle} image={this.props.localImage}
+                   data={this.props.localLinks} />
       </div>
     ];
   };
 
   getViewComponent_() {
-    var articleMode = window.DATA.body.mode === "ARTICLE";
-    if(articleMode) {
-      return <ArticleView />;
+    if(this.props.displayMode === "ARTICLE") {
+      return <ArticleView image={this.props.articleImage} title={this.props.articleTitle}
+                          content={this.props.articleContent} />;
     }
     return this.getNewsViewComponent_();
   };
 
   render() {
-    var view = this.getViewComponent_();
     return (
       <div className="row container body">
-        {view}
+        {this.getViewComponent_()}
       </div>
     );
   }

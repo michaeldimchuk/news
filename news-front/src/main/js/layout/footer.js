@@ -8,24 +8,22 @@ const ReactDOM = require('react-dom');
 
 export default class Footer extends React.Component {
   generateLinkMenus_() {
-    var footer = window.DATA.footer;
-    var socialTitle = resolveText(footer.social.title);
-    var servicesTitle = resolveText(footer.services.title);
+    var socialTitle = resolveText(this.props.socialTitle);
+    var servicesTitle = resolveText(this.props.servicesTitle);
     return [
-      <LinkMenu title={socialTitle} data={footer.social.links} key={0} />,
-      <LinkMenu title={servicesTitle} data={footer.services.links} key={1} />
+      <LinkMenu title={socialTitle} data={this.props.socialLinks} key={0} />,
+      <LinkMenu title={servicesTitle} data={this.props.servicesLinks} key={1} />
     ]
   };
 
   generateContactUs_() {
-    var footer = window.DATA.footer;
-    var title = resolveText(footer.contact.title);
-    var text = resolveText(footer.contact.text);
+    var title = resolveText(this.props.contactTitle);
+    var text = resolveText(this.props.contactText);
     return <FooterContact title={title} text={text} />;
   };
 
   generateCopyright_() {
-    var text = resolveText(window.DATA.footer.copyright);
+    var text = resolveText(this.props.copyright);
     return (
       <div className="footer-copyright">
         <div className="container center">{text}</div>
@@ -34,20 +32,15 @@ export default class Footer extends React.Component {
   };
 
   render() {
-    var footer = window.DATA.footer;
-    var linkMenus = this.generateLinkMenus_();
-    var copyright = this.generateCopyright_();
-    var contactUs = this.generateContactUs_();
-
     return (
       <footer className="page-footer indigo darken-1">
         <div className="container">
           <div className="row">
-            {linkMenus}
-            {contactUs}
+            {this.generateLinkMenus_()}
+            {this.generateContactUs_()}
           </div>
         </div>
-        {copyright}
+        {this.generateCopyright_()}
       </footer>
     );
   }
