@@ -7,9 +7,9 @@ const ReactDOM = require('react-dom');
 
 export default class LocalView extends React.Component {
   render() {
-		return (
+    return (
       <LocalViewPanel title={resolveText(this.props.title)}
             image={this.props.image} data={this.props.data}/>
-		);
-	}
+    );
+  }
 }

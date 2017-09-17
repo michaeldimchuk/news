@@ -13,7 +13,7 @@ export default class LocalViewPanel extends React.Component {
 
   render() {
     var links = generateLinks(this.props.data, this.createLocalElement_);
-		return (
+    return (
       <div className="col s12">
         <div className="card">
           <CardImage image={this.props.image} title={this.props.title} />
@@ -23,6 +23,6 @@ export default class LocalViewPanel extends React.Component {
           </ul>
         </div>
       </div>
-		);
-	}
+    );
+  }
 }

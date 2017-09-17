@@ -13,13 +13,13 @@ export default class LinkMenu extends React.Component {
 
   render() {
     var links = generateLinks(this.props.data, this.createMenuElement_);
-		return (
-			<div className="col s4">
+    return (
+      <div className="col s4">
         <h5 className="white-text">{this.props.title}</h5>
         <ul>
           {links}
         </ul>
       </div>
-		);
-	}
+    );
+  }
 }
