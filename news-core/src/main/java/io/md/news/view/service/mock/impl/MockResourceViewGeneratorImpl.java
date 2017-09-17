@@ -1,5 +1,6 @@
 package io.md.news.view.service.mock.impl;
 
+import com.google.common.io.Resources;
 import io.md.news.data.service.spec.DataAccessService;
 import io.md.news.data.service.spec.JsonSerializer;
 import io.md.news.data.service.spec.TextResourceService;
@@ -13,8 +14,7 @@ import org.springframework.ui.Model;
 
 import javax.annotation.PostConstruct;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +43,7 @@ public class MockResourceViewGeneratorImpl implements ResourceViewGenerator {
     @PostConstruct
     public void init() throws Exception {
         URL url = getClass().getClassLoader().getResource("text-resources.properties");
-        List<String> lines = Files.readAllLines(Paths.get(url.toURI()));
+        List<String> lines = Resources.readLines(url, Charset.defaultCharset());
         for (String property : lines) {
             String[] data = property.split("=");
             dataAccessService.insert(Arrays.asList(data[0]), new TextResourceDto(data[0], data[1]));
